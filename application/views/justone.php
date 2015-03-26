@@ -1,3 +1,1 @@
-<div class="row">
-A burger?
-</div>
+{ordernum} for {name} ({instructions})

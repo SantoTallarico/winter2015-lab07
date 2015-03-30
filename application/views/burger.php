@@ -1,4 +1,4 @@
-Base: {burg}
-Cheese: {}
-Toppings: {}
-Sauces: {}
+Base: {patty}
+Cheese: {cheeses}
+Toppings: {toppings}
+Sauces: {sauces}

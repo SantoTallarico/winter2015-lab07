@@ -26,21 +26,17 @@ class Welcome extends Application {
 	$this->data['pagebody'] = 'homepage';
         $map = directory_map('./data');
         $xmlfiles = array();
-        $i = 0;
+        
         foreach ($map as $file) {
             if (substr_compare($file, ".xml", strlen($file) - 
                     strlen(".xml"), strlen(".xml")) === 0 && substr_compare($file, 
                             "order", 0, strlen("order")) === 0) {
-                $xmlfiles[$i] = $file;
-                $i++;
+                $xmlfiles[] = array('filename' => $file, 'name' => 
+                    substr($file, 0, strlen($file) - strlen(".xml")));
             }
         }
-        $xmlf = array();
-        foreach ($xmlfiles as $file) {
-            $xmlf[] = array('filename' => $file, 'name' => 
-                substr($file, 0, strlen($file) - strlen(".xml")));
-        }
-        $this->data['orders'] = $xmlf;
+        
+        $this->data['orders'] = $xmlfiles;
 	$this->render();
     }
     
@@ -54,8 +50,7 @@ class Welcome extends Application {
 	
 	// Present the list to choose from
 	$this->data['pagebody'] = 'justone';
+        $this->data['ordernum'] = substr($filename, 0, strlen($filename) - strlen(".xml"));
 	$this->render();
     }
-    
-
 }

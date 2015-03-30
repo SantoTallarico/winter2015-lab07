@@ -13,9 +13,9 @@ class Order extends CI_Model {
     protected $patties = array();
 
     // Constructor
-    public function __construct() {
+    public function __construct($filename) {
         parent::__construct();
-        $this->xml = simplexml_load_file(DATAPATH . 'menu.xml');
+        $this->xml = simplexml_load_file(DATAPATH . $filename);
 
         // build the list of patties - approach 1
         foreach ($this->xml->patties->patty as $patty) {
@@ -44,5 +44,4 @@ class Order extends CI_Model {
         else
             return null;
     }
-
 }

@@ -44,5 +44,4 @@ class Menu extends CI_Model {
         else
             return null;
     }
-
 }
